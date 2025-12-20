@@ -39,17 +39,16 @@
         <form action="/update_dept" method="post" onsubmit="return isEmpty()">
             <div class="mb-3">
                 <label for="d_id" class="form-label">Department Id</label>
-                <input type="text" name="d_id"  class="form-control"
-                       onfocusout="validate(this.value)" value="<%=d.getD_id()%>" readonly>
+                <input type="hidden" name="d_id" value="<%=d.getD_id()%>" required>
             </div>
             <div class="mb-3">
                 <label for="d_name" class="form-label">Department Name</label>
                 <input type="text" name="d_name" id="d_name" class="form-control"
-                       onfocusout="validate(this.value)" value="<%=d.getD_name()%>">
+                       onfocusout="validate(this.value)" value="<%=d.getD_name()%>" required>
             </div>
             <div class="mb-3">
                 <label for="d_desc" class="form-label">Description</label>
-                <textarea name="d_desc" id="desc" oninput="validate(this.value)" class="form-control" rows="3" cols="8">
+                <textarea name="d_desc" id="desc" oninput="validate(this.value)" class="form-control" rows="3" cols="8" required>
                     <%=d.getDescriptin()%>
                 </textarea>
             </div>

@@ -12,13 +12,6 @@
 <html>
 <head>
     <title>Add Staff</title>
-    <style>
-        .frm {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
@@ -52,22 +45,22 @@
                         <!-- ROW 1 : BASIC INFO -->
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <label class="form-label">Staff Name</label>
-                                <input type="text" class="form-control" name="staff_name" id="staff_name">
+                                <label for="staff_name" class="form-label">Staff Name</label>
+                                <input type="text" class="form-control" name="staff_name" id="staff_name" required>
                                 <small class="text-danger" id="nameerr"></small>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" id="email">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" required>
                                 <small class="text-danger" id="emailerr"></small>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Phone</label>
+                                <label for="phone" class="form-label">Phone</label>
                                 <div class="input-group">
                                     <span class="input-group-text">+91</span>
-                                    <input type="text" class="form-control" name="phone" id="phone">
+                                    <input type="text" class="form-control" name="phone" id="phone" required>
                                 </div>
                                 <small class="text-danger" id="phonerr"></small>
                             </div>
@@ -76,10 +69,10 @@
                         <!-- ROW 2 : DROPDOWNS -->
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <label class="form-label">Department</label>
+                                <label for="department" class="form-label">Department</label>
                                 <%List<Department> dept = (List<Department>) request.getAttribute("departments");
                                     if (dept != null) {%>
-                                <select class="form-select" id="department" name="department">
+                                <select class="form-select" id="department" name="department" required>
                                     <option value="">--- Select ---</option>
                                     <%for (Department department : dept) {%>
                                     <option value="<%=department.getD_id()%>"><%=department.getD_name()%>
@@ -95,10 +88,10 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Staff Role</label>
+                                <label for="staffrole" class="form-label">Staff Role</label>
                                 <%List<StaffRole> staffrole = (List<StaffRole>) request.getAttribute("staffRoles");
                                     if (staffrole != null) {%>
-                                <select class="form-select" name="staffrole" id="staffrole">
+                                <select class="form-select" name="staffrole" id="staffrole" required>
                                     <option value="">-- Select --</option>
                                     <%for (StaffRole staffRole : staffrole) {%>
                                     <option value="<%=staffRole.getSr_id()%>"><%=staffRole.getRole()%>
@@ -114,8 +107,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Joining Date</label>
-                                <input type="date" class="form-control" name="join_date" id="join_date">
+                                <label for="join_date"  class="form-label">Joining Date</label>
+                                <input type="date" class="form-control" name="join_date" id="join_date" required>
                                 <small class="text-danger" id="dateerr"></small>
                             </div>
                         </div>
@@ -127,18 +120,18 @@
                                 <label class="form-label d-block">Gender</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Male">
-                                    <label class="form-check-label">Male</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="m" value="Male" required>
+                                    <label for="m" class="form-check-label">Male</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Female">
-                                    <label class="form-check-label">Female</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="f" value="Female" required>
+                                    <label for="f" class="form-check-label">Female</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Other">
-                                    <label class="form-check-label">Others</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="o" value="Other" required>
+                                    <label for="o" class="form-check-label">Others</label>
                                 </div>
 
                                 <small class="text-danger d-block" id="gendererr"></small>
@@ -148,13 +141,13 @@
                                 <label class="form-label d-block">Status</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" checked value="Active">
-                                    <label class="form-check-label">Active</label>
+                                    <input class="form-check-input" type="radio" name="status" id="Active" checked value="Active" required>
+                                    <label for="Active" class="form-check-label">Active</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" value="Deactive">
-                                    <label class="form-check-label">Deactive</label>
+                                    <input class="form-check-input" type="radio" name="status" id="deative" value="Deactive" required>
+                                    <label for="deative" class="form-check-label">Deactive</label>
                                 </div>
                             </div>
                         </div>
@@ -162,8 +155,8 @@
                         <!-- ROW 4 : ADDRESS -->
                         <div class="row mb-4">
                             <div class="col-md-12">
-                                <label class="form-label">Address</label>
-                                <textarea class="form-control" rows="3" name="address"></textarea>
+                                <label for="address" class="form-label">Address</label>
+                                <textarea class="form-control" rows="3" id="address" name="address" required></textarea>
                                 <small class="text-danger" id="adderr"></small>
                             </div>
                         </div>

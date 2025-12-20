@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/index.jsp">Hospital Staff Management</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class= " navbar-nav">
+            <ul class="navbar-nav">
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,13 +34,14 @@
                         <li><a class="dropdown-item" href="/viewstaff">View All Staffs </a></li>
                     </ul>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Salary
+                        Assign Shifts
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/loadSal">Add New salary </a></li>
-                        <li><a class="dropdown-item" href="/viewSalary">View All Salary </a></li>
+                        <li><a class="dropdown-item" href="/shifts/assign_shift.jsp">Assign Shifts </a></li>
+                        <li><a class="dropdown-item" href="/view_shifts">View All Staffs </a></li>
                     </ul>
                 </li>
 

@@ -38,12 +38,12 @@
             <div class="mb-3">
                 <label for="sr_id" class="form-label">Staff Role Id</label>
                 <input type="text" name="sr_id" class="form-control"
-                       onfocusout="validate(this.value)" value="<%=d.getSr_id()%>" readonly>
+                       onfocusout="validate(this.value)" value="<%=d.getSr_id()%>" readonly required>
             </div>
             <div class="mb-3">
                 <label for="sr_name" class="form-label">Staff Role</label>
                 <input type="text" name="sr_name" id="name" class="form-control"
-                       onfocusout="validate(this.value)" value="<%=d.getRole()%>">
+                       onfocusout="validate(this.value)" value="<%=d.getRole()%>" required>
             </div>
             <div id="span" style="color:red;"></div>
             <button type="submit" id="submit" class="btn btn-primary">Update Staff Role</button>

@@ -109,8 +109,8 @@
                 </td>
                 <td><%=staff.getStaffRole().getRole()%>
                 </td>
-                <td><a href="/deletestaff?staff_id=<%=staff.getStaff_id()%>" onclick="confirm('Are you sure')">Delete</a></td>
-                <td><a href="/loadupdatestaff?staff_id=<%=staff.getStaff_id()%>">Update</a></td>
+                <td><a href="/deletestaff?staff_id=<%=staff.getStaff_id()%>" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete staff')">Delete</a></td>
+                <td><a href="/loadupdatestaff?staff_id=<%=staff.getStaff_id()%>" class="btn btn-danger"  >Edit</a></td>
             </tr>
             <%
                 }

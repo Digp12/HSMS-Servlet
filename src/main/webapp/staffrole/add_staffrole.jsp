@@ -41,7 +41,7 @@
             <div class="mb-3">
                 <label for="role" class="form-label">Staff Role Name</label>
                 <input type="text" name="role" id="name" class="form-control"
-                       onmouseleave="validate(this.value)">
+                       onchange="validate(this.value)" required>
             </div>
             <div id="span" style="color:red;"></div>
             <button type="submit" id="submit" class="btn btn-primary">Submit</button>

@@ -42,11 +42,11 @@
             <div class="mb-3">
                 <label for="d_name" class="form-label">Department Name</label>
                 <input type="text" name="d_name" id="name" class="form-control"
-                        onfocusout="validate(this.value)">
+                        onchange="validate(this.value)" required>
             </div>
             <div class="mb-3">
                 <label for="desc" class="form-label" >Description</label>
-                <textarea name="d_desc" id="desc" onmouseout="validate(this.value)" class="form-control" rows="3" cols="8">
+                <textarea name="d_desc" id="desc" onchange="validate(this.value)" class="form-control" rows="3" cols="8" required>
                 </textarea>
             </div>
             <div id="span" style="color:red;"></div>
