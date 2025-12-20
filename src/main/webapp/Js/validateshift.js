@@ -29,7 +29,6 @@ function loadStaffs(input) {
                     staffSelect.value = selectedStaffId.value;
                 }
                 $('#staff').trigger('change');
-                alert("this")
             }
         };
         let url = "/get_staffs?date=" + date;

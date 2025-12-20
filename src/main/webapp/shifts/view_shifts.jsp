@@ -77,8 +77,8 @@
                 <td><%=shifts.getShiftType()%>
                 </td>
 
-                <td><a href="/deletestaff?staff_id=<%=shifts.getShiftId()%>" onclick="confirm('Are you sure')">Delete</a></td>
-                <td><a href="/load_update_shift?shift_id=<%=shifts.getShiftId()%>">Update</a></td>
+                <td><a href="/deletestaff?staff_id=<%=shifts.getShiftId()%>" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete shift')">Delete</a></td>
+                <td><a href="/load_update_shift?shift_id=<%=shifts.getShiftId()%>" class="btn btn-success">Edit</a></td>
             </tr>
             <%}
             } else {

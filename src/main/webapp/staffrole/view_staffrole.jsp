@@ -55,8 +55,8 @@
                 </td>
                 <td><%=l.getRole()%>
                 </td>
-                <td><a href="/deletestaffrole?sr_id=<%= l.getSr_id()%>" onclick="return confirm('Are you sure you want to delete this staffrole')">Delete</a></td>
-                <td><a href="/updatestaffrole?sr_id=<%=l.getSr_id()%>">Update</a></td>
+                <td><a href="/deletestaffrole?sr_id=<%= l.getSr_id()%>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this staffrole')">Delete</a></td>
+                <td><a href="/updatestaffrole?sr_id=<%=l.getSr_id()%>" class="btn btn-success" >Edit</a></td>
             </tr>
             <%}}else{%>
             <div class="alert alert-danger" role="alert">

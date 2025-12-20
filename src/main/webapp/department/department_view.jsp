@@ -70,8 +70,8 @@
                 </td>
                 <td><%=l.getDescriptin()%>
                 </td>
-                <td><a href="/deletedept?d_id=<%=l.getD_id()%>" onclick="return confirm('Are you sure you want to delete this department?');">Delete</a></td>
-                <td><a href="/updatedept?d_id=<%=l.getD_id()%>">Update</a></td>
+                <td><a href="/deletedept?d_id=<%=l.getD_id()%>" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this department?');">Delete</a></td>
+                <td><a href="/updatedept?d_id=<%=l.getD_id()%>" class="btn btn-success">Edit</a></td>
             </tr>
                 <%}
                 }else{%>
