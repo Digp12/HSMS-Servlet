@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.hospitalmanagementsystem.helper.ServiceHelper;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 @WebServlet("/view_shifts")
 public class ViewShifts extends HttpServlet {

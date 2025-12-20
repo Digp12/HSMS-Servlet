@@ -1,6 +1,4 @@
-<%@ page import="org.example.hospitalmanagementsystem.model.Staff" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
+<%--  Created by IntelliJ IDEA.
   User: digvi
   Date: 20-12-2025
   Time: 09:53

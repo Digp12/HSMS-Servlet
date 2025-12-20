@@ -12,13 +12,6 @@
 <html>
 <head>
     <title>Add Staff</title>
-    <style>
-        .frm {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>

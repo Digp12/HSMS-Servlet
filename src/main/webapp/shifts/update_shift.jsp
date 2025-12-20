@@ -40,8 +40,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="shift_type" class="form-label">Select Shift Type</label>
-                                <select class="form-select" name="shift_type" id="shift_type"
-                                        value="<%=shift.getShiftType()%>" onchange="shifttime()" required>
+                                <select class="form-select" name="shift_type" id="shift_type" onchange="shifttime()" required>
                                     <option value="<%=shift.getShiftType()%>"><%=shift.getShiftType()%>
                                     </option>
                                     <option value="Morning">Morning</option>

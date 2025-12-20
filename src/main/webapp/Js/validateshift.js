@@ -7,7 +7,6 @@ function loadStaffs(input) {
     if (d <= cur_date) {
         document.getElementById("dateerr").innerHTML = "please select future date";
         input.focus()
-        return;
     } else {
         if (!date) return;
         let shift = document.getElementById("shift")
@@ -52,7 +51,7 @@ function shifttime() {
     let option = document.getElementById("shift_type")
     let startTime = document.getElementById("start_time")
     let endTime = document.getElementById("end_time")
-    if (option.value != "") {
+    if (option.value !== "") {
         if (option.value === "Morning") {
             startTime.value = "08:00"
             endTime.value = "16:00"

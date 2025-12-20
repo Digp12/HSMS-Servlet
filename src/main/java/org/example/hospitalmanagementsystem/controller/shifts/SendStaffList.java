@@ -24,9 +24,9 @@ public class SendStaffList extends HttpServlet {
         String shiftParam = request.getParameter("shift");
         Staff staf = null;
         if (shiftParam != null && !shiftParam.isEmpty()) {
-           int shiftid = Integer.parseInt(shiftParam);
-           Shifts shifts= ServiceHelper.shiftsService.getShiftById(shiftid);
-           staf=shifts.getStaff();
+            int shiftid = Integer.parseInt(shiftParam);
+            Shifts shifts = ServiceHelper.shiftsService.getShiftById(shiftid);
+            staf = shifts.getStaff();
         }
         if (dateParam != null && !dateParam.isEmpty()) {
             LocalDate shiftdate = LocalDate.parse(dateParam);
@@ -38,7 +38,7 @@ public class SendStaffList extends HttpServlet {
                         assignedStaffIds.add(shift.getStaff().getStaff_id());
                     }
                 }
-                Integer curStaffId= (staf != null) ? staf.getStaff_id() : null;
+                Integer curStaffId = (staf != null) ? staf.getStaff_id() : null;
                 staffs.removeIf(staff -> assignedStaffIds.contains(staff.getStaff_id()) &&
                         (curStaffId == null || staff.getStaff_id() != curStaffId));
             }
@@ -54,7 +54,6 @@ public class SendStaffList extends HttpServlet {
             response.getWriter().write(json.toString());
         } else {
             response.getWriter().write("[]");
-            return;
         }
     }
 

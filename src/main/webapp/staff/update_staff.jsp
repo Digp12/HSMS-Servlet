@@ -29,27 +29,27 @@
 
                     <h4 class="card-title mb-4">Update Staff</h4>
 
-                    <%Staff staff = (Staff) request.getAttribute("staff");%>
 
                     <form action="/updatestaff" method="post">
+                    <%Staff staff = (Staff) request.getAttribute("staff");%>
                         <input type="hidden" name="staff_id" value="<%=staff.getStaff_id()%>" required>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <label class="form-label">Staff Name</label>
-                                <input type="text" class="form-control" name="staff_name" id="staff_name"
+                                <label for="staff_name" class="form-label">Staff Name</label>
+                                <input  type="text" class="form-control" name="staff_name" id="staff_name"
                                        value="<%=staff.getName()%>" required>
                                 <small class="text-danger" id="nameerr"></small>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Email</label>
+                                <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" name="email" id="email"
                                        value="<%=staff.getEmail()%>" required>
                                 <small class="text-danger" id="emailerr"></small>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Phone</label>
+                                <label for="phone" class="form-label">Phone</label>
                                 <div class="input-group">
                                     <span class="input-group-text">+91</span>
                                     <input type="text" class="form-control" name="phone" id="phone"
@@ -61,12 +61,12 @@
 
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <label class="form-label">Department</label>
+                                <label for="department" class="form-label">Department</label>
                                 <%
                                     List<Department> dept = (List<Department>) request.getAttribute("departments");
                                     if (dept != null) {
                                 %>
-                                <select class="form-select" id="department" name="department" required>
+                                <select id="department" class="form-select" id="department" name="department" required>
                                     <option value="<%=staff.getDepartment().getD_id()%>"><%=staff.getDepartment().getD_name()%>
                                     </option>
                                     <%for (Department department : dept) {%>
@@ -85,12 +85,12 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Staff Role</label>
+                                <label for="staffrole" class="form-label">Staff Role</label>
                                 <%
                                     List<StaffRole> staffrole = (List<StaffRole>) request.getAttribute("staffRoles");
                                     if (staffrole != null) {
                                 %>
-                                <select class="form-select" name="staffrole" id="staffrole" required>
+                                <select  class="form-select" name="staffrole" id="staffrole" required>
                                     <option value="<%=staff.getStaffRole().getSr_id()%>"><%=staff.getStaffRole().getSr_id()%>
                                     </option>
                                     <%for (StaffRole staffRole : staffrole) {%>
@@ -109,7 +109,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label">Joining Date</label>
+                                <label for="join_date" class="form-label">Joining Date</label>
                                 <input type="date" class="form-control" name="join_date" id="join_date"
                                        value="<%=staff.getJoinDate()%>" required>
                                 <small class="text-danger" id="dateerr"></small>
@@ -122,21 +122,21 @@
                                 <label class="form-label d-block">Gender</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender"
+                                    <input class="form-check-input" type="radio" name="gender" id="male"
                                            value="Male" ${(staff.getGender()=="Male")? 'checked':''} required>
-                                    <label class="form-check-label">Male</label>
+                                    <label for="male" class="form-check-label">Male</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender"
+                                    <input class="form-check-input" type="radio" name="gender" id="female"
                                            value="Female"  ${(staff.getGender()=="Female")? 'checked':''} required>
-                                    <label class="form-check-label">Female</label>
+                                    <label for="female" class="form-check-label">Female</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender"
+                                    <input class="form-check-input" type="radio" name="gender" id="other"
                                            value="Other"  ${(staff.getGender()=="Other" )? 'checked':''} required>
-                                    <label class="form-check-label">Others</label>
+                                    <label for="other" class="form-check-label">Others</label>
                                 </div>
 
                                 <small class="text-danger d-block" id="gendererr"></small>
@@ -146,15 +146,15 @@
                                 <label class="form-label d-block">Status</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" checked
+                                    <input id="active" class="form-check-input" type="radio" name="status" checked
                                            value="Active" ${(staff.getStatus()=="Active")? 'checked':''} required>
-                                    <label class="form-check-label">Active</label>
+                                    <label for="active" class="form-check-label">Active</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status"
+                                    <input id="deactive" class="form-check-input" type="radio" name="status"
                                            value="Deactive" ${(staff.getStatus()=="Deactive")? 'checked':''} required>
-                                    <label class="form-check-label">Deactive</label>
+                                    <label for="deactive" class="form-check-label">Deactive</label>
                                 </div>
                             </div>
                         </div>
@@ -162,8 +162,8 @@
                         <!-- ROW 4 : ADDRESS -->
                         <div class="row mb-4">
                             <div class="col-md-12">
-                                <label class="form-label">Address</label>
-                                <textarea class="form-control" rows="3"
+                                <label for="address" class="form-label">Address</label>
+                                <textarea class="form-control" rows="3" id="address"
                                           name="address"><%=staff.getAddress()%> required</textarea>
                                 <small class="text-danger" id="adderr"></small>
                             </div>
