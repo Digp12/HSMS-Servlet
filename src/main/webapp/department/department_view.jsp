@@ -19,8 +19,7 @@
 
 
 <div class=" justify-content-center pt-3">
-    <%
-        if (request.getAttribute("updatemsg") != null) {
+    <%if (request.getAttribute("updatemsg") != null) {
             String sc = (String) request.getAttribute("updatemsg");
             if (sc.equals("success")) {%>
     <div class="alert alert-success" role="alert">

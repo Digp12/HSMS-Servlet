@@ -29,12 +29,12 @@
             if (sc.equals("success")) {
     %>
     <div class="alert alert-success" role="alert">
-        Staff updated Succesfully
+        Salary updated Succesfully
     </div>
     <%
     } else {%>
         <div class="alert alert-danger" role="alert">
-            Staff not updated
+            Salary not updated
         </div>
         <%}
     }
@@ -43,13 +43,26 @@
             if (delmsg.equals("success")) {%>
 
     <div class="alert alert-success" role="alert">
-        Department deleted Succesfully
+        salary deleted Succesfully
     </div>
     <%} else {%>
     <div class="alert alert-success" role="alert">
-        Something went wrong during deleting Department
+        Something went wrong during deleting Salary
     </div>
         <%}
+    }
+        if (request.getAttribute("addmsg") != null) {
+            String addmsg = (String) request.getAttribute("addmsg");
+            if (addmsg.equals("success")) {%>
+
+    <div class="alert alert-success" role="alert">
+        Salary Added Succesfully
+    </div>
+    <%} else {%>
+    <div class="alert alert-success" role="alert">
+        Something went wrong during Adding salary
+    </div>
+    <%}
     }%>
     <div class="container  p-4">
         <table class="table table-striped table-hover">
@@ -70,9 +83,11 @@
             </tr>
             </thead>
             <tbody>
-            <%List<Staff> staf = (List<Staff>) request.getAttribute("staffs");
+            <%
+                List<Staff> staf = (List<Staff>) request.getAttribute("staffs");
                 if (staf != null) {
-                    for (Staff staff : staf) {%>
+                    for (Staff staff : staf) {
+            %>
             <tr>
                 <td><%=staff.getStaff_id()%>
                 </td>

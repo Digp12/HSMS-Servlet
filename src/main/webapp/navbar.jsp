@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class= " navbar-nav">
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,12 +34,16 @@
                         <li><a class="dropdown-item" href="/viewstaff">View All Staffs </a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Salary
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/loadSal">Add New salary </a></li>
+                        <li><a class="dropdown-item" href="/viewSalary">View All Salary </a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
+
             </ul>
         </div>
     </div>

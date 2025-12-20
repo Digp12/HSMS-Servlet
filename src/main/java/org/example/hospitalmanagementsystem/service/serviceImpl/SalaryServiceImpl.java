@@ -5,6 +5,7 @@ import org.example.hospitalmanagementsystem.repository.SalaryRepo;
 import org.example.hospitalmanagementsystem.repository.repoImpl.SalaryRepoImpl;
 import org.example.hospitalmanagementsystem.service.SalaryService;
 
+import java.time.YearMonth;
 import java.util.List;
 
 public class SalaryServiceImpl implements SalaryService {
@@ -38,5 +39,11 @@ public class SalaryServiceImpl implements SalaryService {
     @Override
     public Salary getSalaryById(int salId) {
         return salaryRepo.getSalaryById(salId);
+    }
+
+    @Override
+    public boolean checkAlreadyAssignedOrNot(int staffId, YearMonth yearMonth) {
+        String yearMonth2 = yearMonth.toString();
+        return salaryRepo.checkAlreadyAssignedOrNot(staffId,yearMonth2);
     }
 }

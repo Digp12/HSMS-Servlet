@@ -16,12 +16,12 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
         try{
             preparedStatement = connection.prepareStatement("insert into salary(s_id,basic_salary,hra,da,pf,month_year,net_salary) values(?,?,?,?,?,?,?)");
             preparedStatement.setInt(1,s.getStaff().getStaff_id());
-            preparedStatement.setInt(2,s.getBasic_salary());
-            preparedStatement.setInt(3,s.getHra());
-            preparedStatement.setInt(4,s.getDa());
-            preparedStatement.setInt(5,s.getPf());
+            preparedStatement.setDouble(2,s.getBasic_salary());
+            preparedStatement.setDouble(3,s.getHra());
+            preparedStatement.setDouble(4,s.getDa());
+            preparedStatement.setDouble(5,s.getPf());
             preparedStatement.setString(6, s.getMonth_year().toString());
-            preparedStatement.setInt(7, s.getNet_salary());
+            preparedStatement.setDouble(7, s.getNet_salary());
             return preparedStatement.executeUpdate()>0;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -32,13 +32,13 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
     public boolean updateSalary(Salary s) {
         try{
             preparedStatement = connection.prepareStatement("update salary set s_id=?, basic_salary=?, hra=?, da=?, pf=?, month_year=?, net_salary=? where salary_id="+s.getSalary_id());
-            preparedStatement.setInt(1,s.getStaff().getStaff_id());
-            preparedStatement.setInt(2,s.getBasic_salary());
-            preparedStatement.setInt(3,s.getHra());
-            preparedStatement.setInt(4,s.getDa());
-            preparedStatement.setInt(5,s.getPf());
+            preparedStatement.setDouble(1,s.getStaff().getStaff_id());
+            preparedStatement.setDouble(2,s.getBasic_salary());
+            preparedStatement.setDouble(3,s.getHra());
+            preparedStatement.setDouble(4,s.getDa());
+            preparedStatement.setDouble(5,s.getPf());
             preparedStatement.setString(6, s.getMonth_year().toString());
-            preparedStatement.setInt(7, s.getNet_salary());
+            preparedStatement.setDouble(7, s.getNet_salary());
             return preparedStatement.executeUpdate()>0;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -68,11 +68,11 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
                 Staff staff =ServiceHelper.staffService.getStaffById(resultSet.getInt(2));
                 sal.setStaff(staff);
                 sal.setBasic_salary(resultSet.getInt(3));
-                sal.setHra(resultSet.getInt(4));
-                sal.setDa(resultSet.getInt(5));
-                sal.setPf(resultSet.getInt(6));
+                sal.setHra(resultSet.getDouble(4));
+                sal.setDa(resultSet.getDouble(5));
+                sal.setPf(resultSet.getDouble(6));
                 sal.setMonth_year(YearMonth.parse(resultSet.getString(7)));
-                sal.setNet_salary(resultSet.getInt(8));
+                sal.setNet_salary(resultSet.getDouble(8));
                 salList.add(sal);
             }
             return salList;
@@ -114,6 +114,19 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
                 s.setNet_salary(resultSet.getInt(8));
             }
             return s;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean checkAlreadyAssignedOrNot(int staffId, String yearMonth) {
+        try{
+            preparedStatement = connection.prepareStatement("select * from salary where s_id=? AND month_year=?");
+            preparedStatement.setInt(1,staffId);
+            preparedStatement.setString(2,yearMonth);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

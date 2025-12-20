@@ -237,4 +237,21 @@ public class StaffRepositoryImpl extends DbConfiguration implements StaffReposit
         }
         return null;
     }
+
+    @Override
+    public String getStaffNameById(int i) {
+        try{
+            preparedStatement =connection.prepareStatement("select * from staff where s_id="+i);
+            resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getString("s_name");
+            }else {
+                return "";
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return "";
+        }
+
+    }
 }

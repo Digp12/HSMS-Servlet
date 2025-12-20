@@ -12,10 +12,10 @@ import java.time.YearMonth;
 public class Salary {
     int salary_id;
     Staff staff;
-    int basic_salary;
-    int Hra;
-    int Da ;
-    int Pf;
+    double basic_salary;
+    double Hra;
+    double Da ;
+    double Pf;
     YearMonth month_year;
-    int net_salary;
+    double net_salary;
 }

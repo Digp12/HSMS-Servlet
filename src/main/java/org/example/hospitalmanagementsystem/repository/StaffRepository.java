@@ -15,4 +15,5 @@ public interface StaffRepository {
      boolean deleteStaff(int id);
      Staff getStaffById(int id);
      Staff getStaffByName(String staffName);
+    String getStaffNameById(int i);
 }
