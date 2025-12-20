@@ -11,7 +11,7 @@ import java.time.YearMonth;
 @NoArgsConstructor
 public class Salary {
     int salary_id;
-    int staff_id;
+    Staff staff;
     int basic_salary;
     int Hra;
     int Da ;

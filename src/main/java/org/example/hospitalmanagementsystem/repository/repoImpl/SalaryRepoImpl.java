@@ -1,7 +1,9 @@
 package org.example.hospitalmanagementsystem.repository.repoImpl;
 
 import org.example.hospitalmanagementsystem.dbConfig.DbConfiguration;
+import org.example.hospitalmanagementsystem.helper.ServiceHelper;
 import org.example.hospitalmanagementsystem.model.Salary;
+import org.example.hospitalmanagementsystem.model.Staff;
 import org.example.hospitalmanagementsystem.repository.SalaryRepo;
 
 import java.time.YearMonth;
@@ -13,7 +15,7 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
     public boolean addSalary(Salary s) {
         try{
             preparedStatement = connection.prepareStatement("insert into salary(s_id,basic_salary,hra,da,pf,month_year,net_salary) values(?,?,?,?,?,?,?)");
-            preparedStatement.setInt(1,s.getStaff_id());
+            preparedStatement.setInt(1,s.getStaff().getStaff_id());
             preparedStatement.setInt(2,s.getBasic_salary());
             preparedStatement.setInt(3,s.getHra());
             preparedStatement.setInt(4,s.getDa());
@@ -30,7 +32,7 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
     public boolean updateSalary(Salary s) {
         try{
             preparedStatement = connection.prepareStatement("update salary set s_id=?, basic_salary=?, hra=?, da=?, pf=?, month_year=?, net_salary=? where salary_id="+s.getSalary_id());
-            preparedStatement.setInt(1,s.getStaff_id());
+            preparedStatement.setInt(1,s.getStaff().getStaff_id());
             preparedStatement.setInt(2,s.getBasic_salary());
             preparedStatement.setInt(3,s.getHra());
             preparedStatement.setInt(4,s.getDa());
@@ -63,7 +65,8 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
             while (resultSet.next()){
                 Salary sal = new Salary();
                 sal.setSalary_id(resultSet.getInt(1));
-                sal.setStaff_id(resultSet.getInt(2));
+                Staff staff =ServiceHelper.staffService.getStaffById(resultSet.getInt(2));
+                sal.setStaff(staff);
                 sal.setBasic_salary(resultSet.getInt(3));
                 sal.setHra(resultSet.getInt(4));
                 sal.setDa(resultSet.getInt(5));
@@ -101,7 +104,8 @@ public class SalaryRepoImpl extends DbConfiguration implements SalaryRepo {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 s.setSalary_id(resultSet.getInt(1));
-                s.setStaff_id(resultSet.getInt(2));
+                Staff staff =ServiceHelper.staffService.getStaffById(resultSet.getInt(2));
+                s.setStaff(staff);
                 s.setBasic_salary(resultSet.getInt(3));
                 s.setHra(resultSet.getInt(4));
                 s.setDa(resultSet.getInt(5));
