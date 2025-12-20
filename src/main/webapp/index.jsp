@@ -85,9 +85,9 @@
         <!---Salary--->
         <div class="col-3 m-2 card text-center">
             <div class=" card-body">
-                <h5 class="card-title">Set Salary</h5>
-                <p class="card-text">Send Salaries for this month</p>
-                <a href="" class="btn btn-primary">Send Salary</a>
+                <h5 class="card-title">Add Salary</h5>
+                <p class="card-text">Add Salaries for this month</p>
+                <a href="/loadSal" class="btn btn-primary">Add Salary</a>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
             <div class="card-body">
                 <h5 class="card-title">View Salary</h5>
                 <p class="card-text">View All Given Salary</p>
-                <a href="" class="btn btn-primary">Add Department</a>
+                <a href="/viewSalary" class="btn btn-primary">Add Department</a>
             </div>
         </div>
 

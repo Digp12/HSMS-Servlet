@@ -37,6 +37,16 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Salary
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/loadSal">Add New salary </a></li>
+                        <li><a class="dropdown-item" href="/viewSalary">View All Salary </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Assign Shifts
                     </a>
                     <ul class="dropdown-menu">
