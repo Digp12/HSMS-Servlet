@@ -1,17 +1,14 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Staff Management</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="ms-auto bg-info-subtle navbar-nav px-4 py-2 gap-3 rounded align-items-center">
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Department
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/department/Add_dept.jsp">Add Department</a></li>
                         <li><a class="dropdown-item" href="/viewdept">View Departments</a></li>
                     </ul>
                 </li>
