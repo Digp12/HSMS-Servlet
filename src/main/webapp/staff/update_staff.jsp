@@ -32,19 +32,19 @@
                     <%Staff staff = (Staff) request.getAttribute("staff");%>
 
                     <form action="/updatestaff" method="post">
-                        <input type="hidden" name="staff_id" value="<%=staff.getStaff_id()%>">
+                        <input type="hidden" name="staff_id" value="<%=staff.getStaff_id()%>" required>
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label class="form-label">Staff Name</label>
                                 <input type="text" class="form-control" name="staff_name" id="staff_name"
-                                       value="<%=staff.getName()%>">
+                                       value="<%=staff.getName()%>" required>
                                 <small class="text-danger" id="nameerr"></small>
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">Email</label>
                                 <input type="email" class="form-control" name="email" id="email"
-                                       value="<%=staff.getEmail()%>">
+                                       value="<%=staff.getEmail()%>" required>
                                 <small class="text-danger" id="emailerr"></small>
                             </div>
 
@@ -53,7 +53,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text">+91</span>
                                     <input type="text" class="form-control" name="phone" id="phone"
-                                           value="<%=staff.getPhone()%>">
+                                           value="<%=staff.getPhone()%>" required>
                                 </div>
                                 <small class="text-danger" id="phonerr"></small>
                             </div>
@@ -66,7 +66,7 @@
                                     List<Department> dept = (List<Department>) request.getAttribute("departments");
                                     if (dept != null) {
                                 %>
-                                <select class="form-select" id="department" name="department">
+                                <select class="form-select" id="department" name="department" required>
                                     <option value="<%=staff.getDepartment().getD_id()%>"><%=staff.getDepartment().getD_name()%>
                                     </option>
                                     <%for (Department department : dept) {%>
@@ -90,7 +90,7 @@
                                     List<StaffRole> staffrole = (List<StaffRole>) request.getAttribute("staffRoles");
                                     if (staffrole != null) {
                                 %>
-                                <select class="form-select" name="staffrole" id="staffrole">
+                                <select class="form-select" name="staffrole" id="staffrole" required>
                                     <option value="<%=staff.getStaffRole().getSr_id()%>"><%=staff.getStaffRole().getSr_id()%>
                                     </option>
                                     <%for (StaffRole staffRole : staffrole) {%>
@@ -111,7 +111,7 @@
                             <div class="col-md-4">
                                 <label class="form-label">Joining Date</label>
                                 <input type="date" class="form-control" name="join_date" id="join_date"
-                                       value="<%=staff.getJoinDate()%>">
+                                       value="<%=staff.getJoinDate()%>" required>
                                 <small class="text-danger" id="dateerr"></small>
                             </div>
                         </div>
@@ -123,19 +123,19 @@
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender"
-                                           value="Male" ${(staff.getGender()=="Male")? 'checked':''} >
+                                           value="Male" ${(staff.getGender()=="Male")? 'checked':''} required>
                                     <label class="form-check-label">Male</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender"
-                                           value="Female"  ${(staff.getGender()=="Female")? 'checked':''}>
+                                           value="Female"  ${(staff.getGender()=="Female")? 'checked':''} required>
                                     <label class="form-check-label">Female</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender"
-                                           value="Other"  ${(staff.getGender()=="Other" )? 'checked':''}>
+                                           value="Other"  ${(staff.getGender()=="Other" )? 'checked':''} required>
                                     <label class="form-check-label">Others</label>
                                 </div>
 
@@ -147,13 +147,13 @@
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" checked
-                                           value="Active" ${(staff.getStatus()=="Active")? 'checked':''}>
+                                           value="Active" ${(staff.getStatus()=="Active")? 'checked':''} required>
                                     <label class="form-check-label">Active</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status"
-                                           value="Deactive" ${(staff.getStatus()=="Deactive")? 'checked':''}>
+                                           value="Deactive" ${(staff.getStatus()=="Deactive")? 'checked':''} required>
                                     <label class="form-check-label">Deactive</label>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@
                             <div class="col-md-12">
                                 <label class="form-label">Address</label>
                                 <textarea class="form-control" rows="3"
-                                          name="address"><%=staff.getAddress()%></textarea>
+                                          name="address"><%=staff.getAddress()%> required</textarea>
                                 <small class="text-danger" id="adderr"></small>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ public class LoadUpdateStaff extends HttpServlet {
         Staff staff = ServiceHelper.staffService.getStaffById(staff_id);
         List<StaffRole> staffRoles=ServiceHelper.staffRoleService.getAllStaffRoles();
         List<Department> departments=ServiceHelper.deptService.getAllDept();
-        if(staff!=null){
+        if(staff!=null &&  staffRoles!=null && departments!=null){
             req.setAttribute("staff",staff);
             req.setAttribute("staffRoles",staffRoles);
             req.setAttribute("departments",departments);
