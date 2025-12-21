@@ -59,7 +59,7 @@
 <script>
     function validate(va) {
         reg = /^[A-Za-z0-9' ']+$/;
-        if (!reg.test(va) || va == "") {
+        if (!reg.test(va) || va === "") {
             document.getElementById("span").innerHTML = "please enter valid input Name";
             document.getElementById("submit").disabled = true;
         } else {
@@ -71,7 +71,7 @@
     function isEmpty(){
         flag=true;
        input= document.getElementById('name')
-        if(input.value==""){
+        if(input.value===""){
             document.getElementById("span").innerHTML = "please enter input first";
             input.focus();
             flag=false
