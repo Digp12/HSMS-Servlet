@@ -10,5 +10,6 @@ public class ServiceHelper {
     public static StaffService staffService = new StaffServiceImpl();
     public static ShiftsService shiftsService = new ShiftsServiceImpl();
     public static SalaryService salaryService = new SalaryServiceImpl();
+    public static AdminLoginService adminLoginService = new AdminLoginServiceImpl();
 
 }

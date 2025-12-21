@@ -12,6 +12,14 @@
 <html>
 <head>
     <title>View Salary</title>
+
+    <style>
+        #th1 th{
+            background-color: gray;
+            color: white;
+            border-bottom: 1px solid brown;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../navbar.jsp" %>
@@ -47,9 +55,9 @@
     <%}
     }%>
     <div class="container  p-4">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover shadow mb-5">
             <thead>
-            <tr>
+            <tr id="th1">
                 <th scope="col">Staff Name</th>
                 <th scope="col">Basic Salary</th>
                 <th scope="col">H. R. A</th>
@@ -68,7 +76,7 @@
                     for(Salary sal : list){
                         String n = ServiceHelper.staffService.getStaffNameById(sal.getStaff().getStaff_id());
             %>
-            <tr>
+            <tr id="td1">
                 <td><%=n%>
                 </td>
                 <td><%=sal.getBasic_salary()%>

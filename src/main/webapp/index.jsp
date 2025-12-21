@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@ include file="navbar.jsp" %>
-<h1 class="text-center mt-1">Hospital Management System</h1>
+<h1 class="text-center mt-1 text-primary">Hospital Staff Management System</h1>
 <div class="container-fluid mx-auto mt-4">
     <div class="row mx-auto justify-content-center">
         <!--department-->

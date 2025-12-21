@@ -1,11 +1,17 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
     <div class="container-fluid">
-        <a class="navbar-brand" href="/index.jsp">Hospital Staff Management</a>
+        <img src="images/hospital_logo.png"
+             alt="Hospital Logo"
+             width="40"
+             height="40"
+             class="me-2">
+        <a class="navbar-brand d-flex align-items-center" href="/index.jsp">Hospital Staff Management</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto gap-3">
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,7 +60,10 @@
                         <li><a class="dropdown-item" href="/view_shifts">View All Staffs </a></li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                        >>>
 
+                </li>
             </ul>
         </div>
     </div>
