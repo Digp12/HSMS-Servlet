@@ -2,6 +2,7 @@ package org.example.hospitalmanagementsystem.repository;
 
 import org.example.hospitalmanagementsystem.model.Attendance;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface AttendaceRepo {
@@ -10,4 +11,5 @@ public interface AttendaceRepo {
     boolean deleteAttendance(int id);
     List<Attendance> showAllAttendance();
     Attendance getAttendanceById(int id);
+    Attendance getAttendanceMarked(int staff_id, LocalDate date);
 }

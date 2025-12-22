@@ -43,7 +43,7 @@
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label for="staff_name" class="form-label">Staff Name</label>
-                                <input  type="text" class="form-control" name="staff_name" id="staff_name"
+                                <input   type="text" class="form-control" name="staff_name" id="staff_name"
                                        value="<%=staff.getName()%>" required>
                                 <small class="text-danger" id="nameerr"></small>
                             </div>
@@ -125,7 +125,13 @@
 
                         <div class="row mb-3">
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control"  onchange="validatePassword(this.value)" name="password" id="password" required>
+                                <small class="text-danger" id="password"></small>
+                            </div>
+
+                            <div class="col-md-4">
                                 <label class="form-label d-block">Gender</label>
 
                                 <div class="form-check form-check-inline">
@@ -149,7 +155,7 @@
                                 <small class="text-danger d-block" id="gendererr"></small>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label d-block">Status</label>
 
                                 <div class="form-check form-check-inline">

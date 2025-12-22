@@ -5,6 +5,7 @@ import org.example.hospitalmanagementsystem.repository.AttendaceRepo;
 import org.example.hospitalmanagementsystem.repository.repoImpl.AttendaceRepoImpl;
 import org.example.hospitalmanagementsystem.service.AttendanceService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AttendanceServiceImpl implements AttendanceService {
@@ -34,5 +35,11 @@ public class AttendanceServiceImpl implements AttendanceService {
     @Override
     public Attendance getAttendanceById(int id) {
         return attendaceRepo.getAttendanceById(id);
+    }
+
+    @Override
+    public Attendance getAttendanceMarked(int staff_id ) {
+        LocalDate date=LocalDate.now();
+        return attendaceRepo.getAttendanceMarked(staff_id,date);
     }
 }

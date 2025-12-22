@@ -10,4 +10,5 @@ public interface AttendanceService {
     boolean deleteAttendance(int id);
     List<Attendance> showAllAttendance();
     Attendance getAttendanceById(int id);
+    Attendance getAttendanceMarked(int staff_id);
 }

@@ -19,7 +19,6 @@ public class AdminLogin extends HttpServlet {
         String password = request.getParameter("password");
         HttpSession session =  request.getSession();
         boolean b = ServiceHelper.adminLoginService.isLogin(username, password);
-        System.out.println(b);
         if(b){
             session.setAttribute("username", username);
             request.setAttribute("isLogin","success");
@@ -30,7 +29,6 @@ public class AdminLogin extends HttpServlet {
             RequestDispatcher rd=request.getRequestDispatcher("AdminLogin.jsp");
             rd.forward(request,response);
         }
-
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);

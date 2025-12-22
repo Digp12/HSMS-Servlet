@@ -5,6 +5,8 @@ import org.example.hospitalmanagementsystem.model.Attendance;
 import org.example.hospitalmanagementsystem.repository.AttendaceRepo;
 
 import java.sql.SQLException;
+import java.sql.Types;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +14,21 @@ public class AttendaceRepoImpl extends DbConfiguration implements AttendaceRepo 
     @Override
     public boolean addAttendance(Attendance a) {
         try{
+            System.out.println(a);
             preparedStatement = connection.prepareStatement("insert into attendance(a_id,s_id,att_date,in_time,out_time,status) values(?, ?, ?, ?, ?, ?)");
             preparedStatement.setInt(1,0);
             preparedStatement.setInt(2,a.getStaff_id());
             preparedStatement.setString(3, String.valueOf(a.getDate()));
-            preparedStatement.setString(4,String.valueOf(a.getIn_time()));
-            preparedStatement.setString(5,String.valueOf(a.getOut_time()));
+            if (a.getIn_time() == null) {
+                preparedStatement.setNull(4, Types.TIME);
+            } else {
+                preparedStatement.setString(4, String.valueOf(a.getIn_time()));
+            }
+            if (a.getOut_time() == null) {
+                preparedStatement.setNull(5, Types.TIME);
+            } else {
+                preparedStatement.setString(5, String.valueOf(a.getIn_time()));
+            }
             preparedStatement.setString(6,a.getStatus());
             int value = preparedStatement.executeUpdate();
             return value >= 1;
@@ -96,5 +107,28 @@ public class AttendaceRepoImpl extends DbConfiguration implements AttendaceRepo 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Attendance getAttendanceMarked(int staff_id, LocalDate date) {
+        try {
+            preparedStatement = connection.prepareStatement("select * from attendance where s_id=? and att_date=?");
+            preparedStatement.setInt(1, staff_id);
+            preparedStatement.setString(2, String.valueOf(date));
+            resultSet = preparedStatement.executeQuery();
+            Attendance a = new Attendance();
+            if (resultSet.next()){
+                a.setId(resultSet.getInt(1));
+                a.setStaff_id(resultSet.getInt(2));
+                a.setDate(resultSet.getDate(3).toLocalDate());
+                a.setIn_time(resultSet.getTime(4).toLocalTime());
+                if(resultSet.getTime(5)!=null){
+                a.setOut_time(resultSet.getTime(5).toLocalTime());}
+                a.setStatus(resultSet.getString(6));
+                return a;
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

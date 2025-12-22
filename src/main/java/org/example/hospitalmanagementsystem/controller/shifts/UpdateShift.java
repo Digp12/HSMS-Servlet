@@ -18,7 +18,6 @@ import java.time.LocalTime;
 public class UpdateShift extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("shift id: ");
         int shiftId = Integer.parseInt(request.getParameter("shift"));
         int staffId = Integer.parseInt(request.getParameter("staffId"));
         Staff staff= ServiceHelper.staffService.getStaffById(staffId);

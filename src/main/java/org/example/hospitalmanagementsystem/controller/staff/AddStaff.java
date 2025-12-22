@@ -24,9 +24,10 @@ public class AddStaff extends HttpServlet {
         String address = request.getParameter("address");
         LocalDate joinDate = LocalDate.parse(request.getParameter("join_date"));
         Status status = Status.valueOf(request.getParameter("status"));
+        String password = request.getParameter("password");
         Department department = ServiceHelper.deptService.getDeptById(Integer.parseInt(request.getParameter("department")));
         StaffRole staffRole = ServiceHelper.staffRoleService.getStaffRoleById(Integer.parseInt(request.getParameter("staffrole")));
-        Staff staff = new Staff(0, name, gender, phone, email, address, joinDate, status, department, staffRole);
+        Staff staff = new Staff(0, name, gender, phone, email, address, joinDate, status, department, staffRole, password);
         if(ServiceHelper.staffService.addStaff(staff)){
             request.setAttribute("msg","success");
         }

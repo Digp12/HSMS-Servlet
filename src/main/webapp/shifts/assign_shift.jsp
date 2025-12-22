@@ -103,6 +103,5 @@
         </div>
     </div>
 </div>
-<script src="/Js/validateshift.js"></script>
 </body>
 </html>

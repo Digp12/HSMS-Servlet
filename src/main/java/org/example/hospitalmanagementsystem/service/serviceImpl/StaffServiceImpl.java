@@ -1,5 +1,6 @@
 package org.example.hospitalmanagementsystem.service.serviceImpl;
 
+import org.example.hospitalmanagementsystem.helper.ServiceHelper;
 import org.example.hospitalmanagementsystem.model.Department;
 import org.example.hospitalmanagementsystem.model.Staff;
 import org.example.hospitalmanagementsystem.model.StaffRole;
@@ -70,5 +71,10 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public String getStaffNameById(int i) {
         return staffRepository.getStaffNameById(i);
+    }
+
+    @Override
+    public Staff checkStaff(String email, String password) {
+        return staffRepository.checkStaff(email, password);
     }
 }

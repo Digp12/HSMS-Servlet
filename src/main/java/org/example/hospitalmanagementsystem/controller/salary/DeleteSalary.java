@@ -16,7 +16,6 @@ public class DeleteSalary extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         int sal_id =Integer.parseInt(request.getParameter("sal_id"));
-        System.out.println(sal_id);
         if(ServiceHelper.salaryService.deleteSalary(sal_id)) {
             request.setAttribute("delmsg","success");
         }

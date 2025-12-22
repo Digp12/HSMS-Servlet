@@ -22,4 +22,5 @@ public class Staff {
     private Status status;
     private Department department;
     private StaffRole staffRole;
+    private String password;
 }

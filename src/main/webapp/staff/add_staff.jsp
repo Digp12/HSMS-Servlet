@@ -47,7 +47,7 @@
                     }%>
 
                     <!-- FORM -->
-                    <form action="/add_staff" method="post" >
+                    <form id="form" action="/add_staff" method="post" >
 
                         <!-- ROW 1 : BASIC INFO -->
                         <div class="row mb-3">
@@ -123,7 +123,13 @@
                         <!-- ROW 3 : GENDER & STATUS -->
                         <div class="row mb-3">
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control"  name="password" id="password" required>
+                                <small class="text-danger" id="passworderr"></small>
+                            </div>
+
+                            <div class="col-md-4">
                                 <label class="form-label d-block">Gender</label>
 
                                 <div class="form-check form-check-inline">
@@ -144,7 +150,7 @@
                                 <small class="text-danger d-block" id="gendererr"></small>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label d-block">Status</label>
 
                                 <div class="form-check form-check-inline">
@@ -180,7 +186,7 @@
         </div>
     </div>
 </div>
-<script src="../Js/staffvalidation.js">
+<script src="/Js/staffvalidation.js?v=1">
 
 </script>
 </body>

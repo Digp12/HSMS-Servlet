@@ -32,7 +32,22 @@
             <div class="card shadow p-4">
                 <h3 class="text-center mb-4">Admin Login</h3>
 
-                <form action="adminLogin" method="post">
+                <form id="form" method="post">
+
+                    <div class="mb-3">
+                        <label class="form-label d-block">Login Type</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="logintype"
+                                   onchange="loginType(this.value)" id="admin" value="admin" required>
+                            <label for="admin" class="form-check-label">Admin</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" onchange="loginType(this.value)"
+                                   name="logintype" id="user" value="user" required>
+                            <label for="user" class="form-check-label">User</label>
+                        </div>
+                        <small class="text-danger d-block" id="typeerr"></small>
+                    </div>
 
                     <div class="mb-3">
                         <input type="text"
@@ -50,13 +65,39 @@
                                required>
                     </div>
                     <%
-                        String msg = (String) request.getAttribute("isLogin");
-                        if (msg != null) {
+                        String masg = (String) request.getAttribute("isLogin");
+                        if (masg != null) {
                     %>
                     <div class="alert alert-danger text-center">
-                        <%= msg %>
+                        <%= masg %>
                     </div>
                     <%
+                        }
+                        if (request.getParameter("msg") != null) {
+                            String msg = request.getParameter("msg");
+                            if (msg.equals("checkin")) {%>
+                    <div class="alert alert-warning">
+                        Your check-in has been recorded successfully.
+                    </div>
+                    <%
+                        }
+                        if (msg.equals("checkout")) {
+                    %>
+                    <div class="alert alert-warning">
+                        Your check-out has been recorded successfully.
+                    </div>
+                    <%
+                            }
+                        }
+
+                        if (request.getParameter("error") != null) {
+                            if (request.getParameter("error").equals("not logged in")) {%>
+                    <div class="alert alert-warning">
+                        Before Marking Attendance You need to login first
+                    </div>
+
+                    <%
+                            }
                         }
                     %>
                     <div class="d-grid">
@@ -72,5 +113,16 @@
     </div>
 </div>
 
+
+<script>
+    function loginType(type) {
+        let form = document.getElementById("form")
+        if (type == "user") {
+            form.setAttribute('action', 'userlogin')
+        } else {
+            form.setAttribute('action', 'adminLogin')
+        }
+    }
+</script>
 </body>
 </html>

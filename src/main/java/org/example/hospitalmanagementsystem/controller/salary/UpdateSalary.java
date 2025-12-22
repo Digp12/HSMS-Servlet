@@ -21,7 +21,6 @@ public class UpdateSalary extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Salary sal = new Salary();
-        System.out.println("dig");
 
         int salid = Integer.parseInt(request.getParameter("sal_id"));
         double basic_salary = Double.parseDouble(request.getParameter("basic_salary"));
@@ -41,7 +40,6 @@ public class UpdateSalary extends HttpServlet {
         sal.setMonth_year(month_year);
         sal.setStaff(st);
         sal.setNet_salary(grossSal);
-        System.out.println(sal);
         if(ServiceHelper.salaryService.updateSalary(sal)){
             request.setAttribute("updatemsg","success");
         }
