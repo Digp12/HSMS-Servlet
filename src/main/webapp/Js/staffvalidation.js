@@ -18,6 +18,17 @@ function validateEmail() {
     return true
 }
 
+function validatePassword() {
+    const password=document.getElementById("password");
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    const e = document.getElementById("passworderr");
+     if(!regex.test(password.value)){
+         e.innerText="password must contain 8+ chars, at least 1 uppercase, 1 lowercase, 1 number"
+         return false
+     }
+    e.innerText = "";
+    return true
+}
 function validatePhone() {
     let i = document.getElementById("phone"), e = document.getElementById("phonerr");
     if (!/^[0-9]{10}$/.test(i.value)) {
@@ -73,7 +84,6 @@ function validateAddress() {
     e.innerText = "";
     return true
 }
-
 document.getElementById("staff_name").addEventListener("input", validateName);
 document.getElementById("email").addEventListener("input", validateEmail);
 document.getElementById("phone").addEventListener("input", validatePhone);
@@ -82,12 +92,12 @@ document.getElementById("staffrole").addEventListener("change", () => validateSe
 document.getElementById("join_date").addEventListener("change", validateDate);
 document.getElementById("address").addEventListener("input", validateAddress);
 document.querySelectorAll('input[name="Gender"]').forEach(r => r.addEventListener("change", validateGender));
+document.getElementById("password").addEventListener("input", validatePassword);
 document.getElementById("form").addEventListener("submit", function (e) {
-
 
     let v = validateName() & validateEmail() & validatePhone() & validateGender() &
         validateSelect("department", "depterr", "Select department") &
         validateSelect("staffrole", "strerr", "Select staff role") &
-        validateDate() & validateAddress();
+        validateDate() & validateAddress()&validatePassword();
     if (!v) e.preventDefault()
 });
