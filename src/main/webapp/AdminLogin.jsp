@@ -19,6 +19,16 @@
         </h1>
 
         <div class="col-md-4">
+            <%
+                String msg1 = (String) session.getAttribute("loginFirst");
+                if(msg1 != null){
+            %>
+            <div class="alert alert-danger text-center">
+                <%= msg1 %>
+            </div>
+            <%
+                }
+            %>
             <div class="card shadow p-4">
                 <h3 class="text-center mb-4">Admin Login</h3>
 

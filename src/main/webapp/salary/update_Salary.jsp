@@ -17,7 +17,14 @@
 
 
 <div class="container mt-4">
+    <%
+        HttpSession session1 = request.getSession(false);
 
+        if(session1 == null || session1.getAttribute("username") == null){
+            session.setAttribute("loginFirst", "Login First");
+            response.sendRedirect("AdminLogin.jsp");
+        }
+    %>
     <div class="row justify-content-center">
         <div class="col-lg-10">
 

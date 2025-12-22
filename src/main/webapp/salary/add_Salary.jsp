@@ -12,6 +12,14 @@
 
 <div class="container mt-4">
     <%
+        HttpSession session1 = request.getSession(false);
+
+        if(session1 == null || session1.getAttribute("username") == null){
+            session.setAttribute("loginFirst", "Login First");
+            response.sendRedirect("AdminLogin.jsp");
+        }
+    %>
+    <%
         if (request.getAttribute("check") != null) {
             String sc = (String) request.getAttribute("check");
             if (sc.equals("success")) {

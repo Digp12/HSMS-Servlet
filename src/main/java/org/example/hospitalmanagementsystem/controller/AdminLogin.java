@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.example.hospitalmanagementsystem.helper.ServiceHelper;
 
 import java.io.IOException;
@@ -16,10 +17,11 @@ public class AdminLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("adminName");
         String password = request.getParameter("password");
-
+        HttpSession session =  request.getSession();
         boolean b = ServiceHelper.adminLoginService.isLogin(username, password);
         System.out.println(b);
         if(b){
+            session.setAttribute("username", username);
             request.setAttribute("isLogin","success");
             response.sendRedirect("index.jsp");
         }

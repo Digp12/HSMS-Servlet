@@ -21,6 +21,14 @@
 <body>
 <%@ include file="../navbar.jsp" %>
 <div class="row frm pt-3 ">
+    <%
+        HttpSession session1 = request.getSession(false);
+
+        if(session1 == null || session1.getAttribute("username") == null){
+            session.setAttribute("loginFirst", "Login First");
+            response.sendRedirect("AdminLogin.jsp");
+        }
+    %>
     <div class="col-6 card pt-5">
         <h1>Add Staff Role</h1>
         <%

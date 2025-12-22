@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 
     <div class="container-fluid">
-        <img src="images/hospital_logo.png"
-             alt="Hospital Logo"
+        <img src="<%=request.getContextPath()%>/images/hospital_logo.png"
+             alt="Hosital Logo"
              width="40"
              height="40"
              class="me-2">
@@ -61,12 +61,17 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                        >>>
+                    <a class="nav-link bg-danger text-light rounded" href="logout"
+                       onclick="return confirm('Are you sure you want to logout?')">
+                        Logout
+                    </a>
 
                 </li>
+
             </ul>
         </div>
     </div>
 </nav>
+
 
 

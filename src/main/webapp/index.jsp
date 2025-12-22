@@ -6,7 +6,16 @@
     <%@ include file="Dependancy.jsp" %>
 </head>
 <body>
+
 <%@ include file="navbar.jsp" %>
+<%
+    HttpSession session1 = request.getSession(false);
+
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <h1 class="text-center mt-1 text-primary">Hospital Staff Management System</h1>
 <div class="container-fluid mx-auto mt-4">
     <div class="row mx-auto justify-content-center">
