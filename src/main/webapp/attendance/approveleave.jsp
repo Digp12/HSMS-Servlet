@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary px-4">Add Salary</button>
+                        <button type="submit" class="btn btn-primary px-4">Approve Leave</button>
                     </div>
                 </form>
             </div>
