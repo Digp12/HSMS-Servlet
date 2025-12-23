@@ -42,4 +42,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         LocalDate date=LocalDate.now();
         return attendaceRepo.getAttendanceMarked(staff_id,date);
     }
+    public List<Integer> getAbsentStaffIds(LocalDate date) {
+        return attendaceRepo.getAbsentStaffIds(date);
+    }
 }

@@ -1,4 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +15,7 @@
 <body>
 
 <%@ include file="navbar.jsp" %>
-<%
-    HttpSession session1 = request.getSession(false);
 
-    if(session1 == null || session1.getAttribute("username") == null){
-        session.setAttribute("loginFirst", "Login First");
-        response.sendRedirect("AdminLogin.jsp");
-    }
-%>
 <h1 class="text-center mt-1 text-primary">Hospital Staff Management System</h1>
 <div class="container-fluid mx-auto mt-4">
     <div class="row mx-auto justify-content-center">

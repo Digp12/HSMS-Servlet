@@ -28,9 +28,7 @@ public class AddSalary extends HttpServlet {
         String staffIdStr = request.getParameter("staffname");
         String bsalaryStr = request.getParameter("salary");
         String ym = request.getParameter("yearMonth");
-        System.out.println("staffIdStr:"+staffIdStr);
-        System.out.println("bsalaryStr:"+bsalaryStr);
-        System.out.println("ym:"+ym);
+
         if (staffIdStr == null || staffIdStr.isEmpty() ||
                 bsalaryStr == null || bsalaryStr.isEmpty() ||
                 ym == null || ym.isEmpty()) {

@@ -3,6 +3,13 @@
 <%@ page import="org.example.hospitalmanagementsystem.model.Staff" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../Dependancy.jsp" %>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>Add Salary</title>
@@ -11,14 +18,7 @@
 <%@ include file="../navbar.jsp" %>
 
 <div class="container mt-4">
-    <%
-        HttpSession session1 = request.getSession(false);
 
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <%
         if (request.getAttribute("check") != null) {
             String sc = (String) request.getAttribute("check");
@@ -55,7 +55,7 @@
                                     List<Staff> staffs = (List<Staff>) request.getAttribute("AllStaff");
                                     if (staffs != null && !staffs.isEmpty()) {
                                 %>
-                                <select class="form-select" name="staffname" required>
+                                <select class="form-select select2 form-control" name="staffname"  id="staff" required>
                                     <option value="">--- Select ---</option>
                                     <% for (Staff staff : staffs) { %>
                                     <option value="<%= staff.getStaff_id() %>">
@@ -93,5 +93,12 @@
     </div>
 </div>
 <script src="../Js/staffvalidation.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#staff').select2({
+            width: '100%'
+        });
+    });
+</script>
 </body>
 </html>

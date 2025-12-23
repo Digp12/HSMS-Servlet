@@ -8,6 +8,7 @@ import org.example.hospitalmanagementsystem.repository.StaffRepository;
 import org.example.hospitalmanagementsystem.repository.repoImpl.StaffRepositoryImpl;
 import org.example.hospitalmanagementsystem.service.StaffService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class StaffServiceImpl implements StaffService {
@@ -76,5 +77,10 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public Staff checkStaff(String email, String password) {
         return staffRepository.checkStaff(email, password);
+    }
+
+    @Override
+    public List<Staff> getAllAvailableStaff(LocalDate date) {
+        return staffRepository.getAllAvailableStaff(date);
     }
 }

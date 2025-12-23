@@ -55,11 +55,21 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Assign Shifts
+                         Shifts
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/shifts/assign_shift.jsp">Assign Shifts </a></li>
-                        <li><a class="dropdown-item" href="/view_shifts">View All Staffs </a></li>
+                        <li><a class="dropdown-item" href="/view_shifts">View All Shifts </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Attendance
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/loadapproveleave">Approve Leave </a></li>
+                        <li><a class="dropdown-item" href="/viewallattendance">View Attendance </a></li>
+                        <li><a class="dropdown-item" href="/markabsents" onclick='confirm("are you sure you want to mark absents")'>Mark Absents </a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -67,9 +77,7 @@
                        onclick="return confirm('Are you sure you want to logout?')">
                         Logout
                     </a>
-
                 </li>
-
             </ul>
         </div>
     </div>

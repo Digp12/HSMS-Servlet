@@ -30,7 +30,7 @@ public class AttendanceCheckIn extends HttpServlet {
                 Attendance attendance = new Attendance();
                 attendance.setDate(LocalDate.now());
                 attendance.setIn_time(LocalTime.now());
-                attendance.setStaff_id(staff.getStaff_id());
+                attendance.setStaff(staff);
                 attendance.setStatus("present");
                 System.out.println(attendance);
                 if (ServiceHelper.attendanceService.addAttendance(attendance)) {

@@ -8,23 +8,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="../Dependancy.jsp" %>
+
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>Add Staff</title>
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
-
+<%@ include file="../Dependancy.jsp" %>
 <div class="container mt-4">
-    <%
-        HttpSession session1 = request.getSession(false);
-
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <div class="row justify-content-center">
         <div class="col-lg-10">
 

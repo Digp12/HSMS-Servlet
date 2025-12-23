@@ -14,6 +14,13 @@
   Time: 14:23
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>All Staff</title>
@@ -21,28 +28,19 @@
 <body>
 <%@ include file="../Dependancy.jsp" %>
 <%@ include file="../navbar.jsp" %>
-
 <div class=" justify-content-center pt-3">
-    <%
-        HttpSession session1 = request.getSession(false);
-
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <%
         if (request.getAttribute("updatemsg") != null) {
             String sc = (String) request.getAttribute("updatemsg");
             if (sc.equals("success")) {
     %>
     <div class="alert alert-success" role="alert">
-        Salary updated Succesfully
+        Staff updated Succesfully
     </div>
     <%
     } else {%>
         <div class="alert alert-danger" role="alert">
-            Salary not updated
+            Staff not updated
         </div>
         <%}
     }
@@ -51,11 +49,11 @@
             if (delmsg.equals("success")) {%>
 
     <div class="alert alert-success" role="alert">
-        salary deleted Succesfully
+        Staff deleted Succesfully
     </div>
     <%} else {%>
     <div class="alert alert-success" role="alert">
-        Something went wrong during deleting Salary
+        Something went wrong during deleting Staff
     </div>
         <%}
     }
@@ -64,11 +62,11 @@
             if (addmsg.equals("success")) {%>
 
     <div class="alert alert-success" role="alert">
-        Salary Added Succesfully
+        Staff Added Succesfully
     </div>
     <%} else {%>
     <div class="alert alert-success" role="alert">
-        Something went wrong during Adding salary
+        Something went wrong during Adding Staff
     </div>
     <%}
     }%>
@@ -118,7 +116,7 @@
                 <td><%=staff.getStaffRole().getRole()%>
                 </td>
                 <td><a href="/deletestaff?staff_id=<%=staff.getStaff_id()%>" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete staff')">Delete</a></td>
-                <td><a href="/loadupdatestaff?staff_id=<%=staff.getStaff_id()%>" class="btn btn-danger"  >Edit</a></td>
+                <td><a href="/loadupdatestaff?staff_id=<%=staff.getStaff_id()%>" class="btn btn-success"  >Edit</a></td>
             </tr>
             <%
                 }

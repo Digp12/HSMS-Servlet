@@ -21,7 +21,7 @@
         <div class="col-md-4">
             <%
                 String msg1 = (String) session.getAttribute("loginFirst");
-                if(msg1 != null){
+                if (msg1 != null) {
             %>
             <div class="alert alert-danger text-center">
                 <%= msg1 %>
@@ -38,7 +38,7 @@
                         <label class="form-label d-block">Login Type</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="logintype"
-                                   onchange="loginType(this.value)" id="admin" value="admin" required>
+                                   onchange="loginType(this.value)" id="admin" value="admin" checked required>
                             <label for="admin" class="form-check-label">Admin</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -117,12 +117,22 @@
 <script>
     function loginType(type) {
         let form = document.getElementById("form")
-        if (type == "user") {
+        if (type === "user") {
             form.setAttribute('action', 'userlogin')
         } else {
             form.setAttribute('action', 'adminLogin')
         }
     }
+
+    window.addEventListener('load',
+        () => {
+            let radio = document.getElementById("admin").value
+            if (radio !=="") {
+                loginType(radio)
+            } else {
+                loginType(document.getElementById("user").value)
+            }
+        });
 </script>
 </body>
 </html>

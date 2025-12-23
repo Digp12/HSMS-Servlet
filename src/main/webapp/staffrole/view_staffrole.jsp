@@ -8,6 +8,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>All Departments</title>
@@ -18,14 +25,6 @@
 
 
 <div class=" justify-content-center pt-3">
-    <%
-        HttpSession session1 = request.getSession(false);
-
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <%
         if (request.getAttribute("staffrrolemsg") != null) {
             String sc = (String) request.getAttribute("staffrrolemsg");

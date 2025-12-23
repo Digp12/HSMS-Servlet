@@ -12,7 +12,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class Attendance {
     private int id;
-    private int staff_id;
+    private Staff staff;
     private LocalDate date;
     private LocalTime in_time;
     private LocalTime out_time;

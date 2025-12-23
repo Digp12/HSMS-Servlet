@@ -7,6 +7,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>All Shifts</title>
@@ -17,26 +24,19 @@
 <%@ include file="../navbar.jsp" %>
 
 <div class=" justify-content-center pt-3">
-    <%
-        HttpSession session1 = request.getSession(false);
 
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <%
         if (request.getAttribute("updatemsg") != null) {
             String sc = (String) request.getAttribute("updatemsg");
             if (sc.equals("success")) {
     %>
     <div class="alert alert-success" role="alert">
-        Staff updated Succesfully
+        Shift updated Succesfully
     </div>
     <%
     } else {%>
     <div class="alert alert-danger" role="alert">
-        Staff not updated
+        Shift not updated
     </div>
     <%}
     }
@@ -45,11 +45,11 @@
             if (delmsg.equals("success")) {%>
 
     <div class="alert alert-success" role="alert">
-        Department deleted Succesfully
+        Shift deleted Succesfully
     </div>
     <%} else {%>
     <div class="alert alert-success" role="alert">
-        Something went wrong during deleting Department
+        Something went wrong during deleting Shift
     </div>
     <%}
     }%>
@@ -85,14 +85,14 @@
                 <td><%=shifts.getShiftType()%>
                 </td>
 
-                <td><a href="/deletestaff?staff_id=<%=shifts.getShiftId()%>" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete shift')">Delete</a></td>
+                <td><a href="/delete_shifts?shift_id=<%=shifts.getShiftId()%>" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete shift')">Delete</a></td>
                 <td><a href="/load_update_shift?shift_id=<%=shifts.getShiftId()%>" class="btn btn-success">Edit</a></td>
             </tr>
             <%}
             } else {
             %>
             <div class="alert alert-danger" role="alert">
-                First Add Staff
+                First Add Shifts
             </div>
             <%}%>
             </tbody>

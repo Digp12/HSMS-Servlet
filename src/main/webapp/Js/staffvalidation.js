@@ -41,7 +41,7 @@ function validatePhone() {
 
 function validateGender() {
     let e = document.getElementById("gendererr");
-    if (!document.querySelector('input[name="Gender"]:checked')) {
+    if (!document.querySelector('input[name="gender"]:checked')) {
         e.innerText = "Select gender";
         return false
     }

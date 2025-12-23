@@ -14,6 +14,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../Dependancy.jsp" %>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
+
 <html>
 <head>
     <title>Title</title>
@@ -30,14 +38,7 @@
 
 
 <div class="row frm pt-3 ">
-    <%
-        HttpSession session1 = request.getSession(false);
 
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <div class="col-6 card pt-5">
         <h1>Update Department</h1>
         <%
@@ -52,7 +53,7 @@
             <div class="mb-3">
                 <label for="d_name" class="form-label">Department Name</label>
                 <input type="text" name="d_name" id="d_name" class="form-control"
-                       onfocusout="validate(this.value)" value="<%=d.getD_name()%>" required>
+                       oninput="validate(this.value)" value="<%=d.getD_name()%>" required>
             </div>
             <div class="mb-3">
                 <label for="d_desc" class="form-label">Description</label>

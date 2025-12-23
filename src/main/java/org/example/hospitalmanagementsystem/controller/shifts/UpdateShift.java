@@ -31,6 +31,6 @@ public class UpdateShift extends HttpServlet {
         }else {
             request.setAttribute("updatemsg","fail");
         }
-        request.getRequestDispatcher("/viewstaff").forward(request,response);
+        request.getRequestDispatcher("/view_shifts").forward(request,response);
     }
 }

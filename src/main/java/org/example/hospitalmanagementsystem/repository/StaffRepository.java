@@ -4,6 +4,7 @@ import org.example.hospitalmanagementsystem.model.Department;
 import org.example.hospitalmanagementsystem.model.Staff;
 import org.example.hospitalmanagementsystem.model.StaffRole;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface StaffRepository {
@@ -26,4 +27,5 @@ public interface StaffRepository {
     String getStaffNameById(int i);
 
     Staff checkStaff(String email, String password);
+    List<Staff> getAllAvailableStaff(LocalDate date);
 }

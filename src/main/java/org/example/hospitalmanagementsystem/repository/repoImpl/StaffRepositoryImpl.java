@@ -8,6 +8,7 @@ import org.example.hospitalmanagementsystem.repository.StaffRepository;
 import org.example.hospitalmanagementsystem.repository.StaffRoleRepository;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -291,5 +292,35 @@ public class StaffRepositoryImpl extends DbConfiguration implements StaffReposit
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public List<Staff> getAllAvailableStaff(LocalDate date) {
+        List<Staff> staffList=new ArrayList<>();
+        try{
+            preparedStatement =connection.prepareStatement("select * from staff where s_id not in (select s_id from attendance where status='absent' and att_date=?)");
+            preparedStatement.setDate(1,java.sql.Date.valueOf(date));
+            resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Staff staff=new Staff();
+                staff.setStaff_id(resultSet.getInt("s_id"));
+                staff.setName(resultSet.getString("s_name"));
+                staff.setGender(Gender.valueOf(resultSet.getString("s_gender")));
+                staff.setPhone(resultSet.getString("s_phone"));
+                staff.setAddress(resultSet.getString("s_address"));
+                staff.setEmail(resultSet.getString("s_email"));
+                staff.setJoinDate(resultSet.getDate("join_date").toLocalDate());
+                staff.setPassword(resultSet.getString("password"));
+                staff.setStatus(Status.valueOf(resultSet.getString("s_status")));
+                int r_id=resultSet.getInt("r_id");
+                staff.setStaffRole(ServiceHelper.staffRoleService.getStaffRoleById(r_id));
+                int d_id=resultSet.getInt("d_id");
+                staff.setDepartment(ServiceHelper.deptService.getDeptById(d_id));
+                staffList.add(staff);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return staffList;
     }
 }

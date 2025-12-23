@@ -6,6 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>Update Shift</title>
@@ -14,14 +21,7 @@
 <%@ include file="../Dependancy.jsp" %>
 <%@ include file="../navbar.jsp" %>
 <div class="container mt-4">
-    <%
-        HttpSession session1 = request.getSession(false);
 
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <div class="row justify-content-center">
         <div class="col-lg-10">
 
@@ -102,12 +102,27 @@
 </script>
 <script>
     window.onload = function () {
+
         let dateInput = document.getElementById("date");
-        if (dateInput.value) {
+
+        // Safety check
+        if (!dateInput) {
+            console.error("Date input not found!");
+            return;
+        }
+
+        // If date already selected (update page case)
+        if (dateInput.value !== "") {
             loadStaffs(dateInput);
         }
+
+        // Change event
+        dateInput.addEventListener("change", function () {
+            loadStaffs(this);
+        });
     };
 </script>
+
 
 </body>
 

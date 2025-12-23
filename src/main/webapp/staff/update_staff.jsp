@@ -11,6 +11,13 @@
   Time: 22:34
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>Update Staff</title>
@@ -20,14 +27,6 @@
 <%@ include file="../navbar.jsp" %>
 
 <div class="container mt-4">
-    <%
-        HttpSession session1 = request.getSession(false);
-
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <div class="row justify-content-center">
         <div class="col-lg-10">
 
@@ -98,7 +97,7 @@
                                     if (staffrole != null) {
                                 %>
                                 <select  class="form-select" name="staffrole" id="staffrole" required>
-                                    <option value="<%=staff.getStaffRole().getSr_id()%>"><%=staff.getStaffRole().getSr_id()%>
+                                    <option value="<%=staff.getStaffRole().getSr_id()%>"><%=staff.getStaffRole().getRole()%>
                                     </option>
                                     <%for (StaffRole staffRole : staffrole) {%>
                                     <option value="<%=staffRole.getSr_id()%>"><%=staffRole.getRole()%>
@@ -127,8 +126,8 @@
 
                             <div class="col-md-4">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control"  onchange="validatePassword(this.value)" name="password" id="password" required>
-                                <small class="text-danger" id="password"></small>
+                                <input type="password" class="form-control"value="<%=staff.getPassword()%>" name="password" id="password" required>
+                                <small class="text-danger" id="passworderr"></small>
                             </div>
 
                             <div class="col-md-4">

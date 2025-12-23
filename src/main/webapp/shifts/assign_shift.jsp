@@ -5,24 +5,21 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession session1 = request.getSession(false);
+    if(session1 == null || session1.getAttribute("username") == null){
+        session.setAttribute("loginFirst", "Login First");
+        response.sendRedirect("AdminLogin.jsp");
+    }
+%>
 <html>
 <head>
     <title>Assign Shift</title>
-
-
 </head>
 <body>
 <%@ include file="../Dependancy.jsp" %>
 <%@ include file="../navbar.jsp" %>
 <div class="container mt-4">
-    <%
-        HttpSession session1 = request.getSession(false);
-
-        if(session1 == null || session1.getAttribute("username") == null){
-            session.setAttribute("loginFirst", "Login First");
-            response.sendRedirect("AdminLogin.jsp");
-        }
-    %>
     <div class="row justify-content-center">
         <div class="col-lg-10">
 
@@ -43,10 +40,8 @@
                     <div class="alert alert-danger" role="alert">
                         Something wend wrong during assigning Shift
                     </div>
-                    <%
-                            }
-                        }
-                    %>
+                    <%}
+                        }%>
 
                     <form action="/assign_shift" method="post">
 
@@ -59,8 +54,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="shift_type" class="form-label">Select Shift Type</label>
-                                <select class="form-select" name="shift_type" id="shift_type" onchange="shifttime()"
-                                        required>
+                                <select class="form-select" name="shift_type" id="shift_type" onchange="shifttime()" required>
                                     <option value="">--- Select ---</option>
                                     <option value="Morning">Morning</option>
                                     <option value="Evening">Evening</option>
@@ -103,5 +97,6 @@
         </div>
     </div>
 </div>
+<script src="/Js/validateshift.js"></script>
 </body>
 </html>

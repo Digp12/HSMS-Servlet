@@ -18,7 +18,7 @@ import java.util.List;
 public class SendStaffList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
-        List<Staff> staffs = ServiceHelper.staffService.getAllStaff();
+
         String dateParam = request.getParameter("date");
 
         String shiftParam = request.getParameter("shift");
@@ -30,6 +30,7 @@ public class SendStaffList extends HttpServlet {
         }
         if (dateParam != null && !dateParam.isEmpty()) {
             LocalDate shiftdate = LocalDate.parse(dateParam);
+            List<Staff> staffs = ServiceHelper.staffService.getAllAvailableStaff(shiftdate);
             List<Shifts> shifts = ServiceHelper.shiftsService.getAllShiftsByDate(shiftdate);
             if (shifts != null && staffs != null) {
                 List<Integer> assignedStaffIds = new ArrayList<>();
@@ -61,4 +62,5 @@ public class SendStaffList extends HttpServlet {
             ServletException, IOException {
         doGet(request, response);
     }
+
 }

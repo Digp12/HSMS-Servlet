@@ -66,3 +66,4 @@ function shifttime() {
         document.getElementById("typerr").innerHTML = "select ShiftType"
     }
 }
+
