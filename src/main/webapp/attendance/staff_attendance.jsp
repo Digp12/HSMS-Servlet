@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: digvi
   Date: 22-12-2025
@@ -46,10 +47,17 @@
 
     <p class="text-muted">
         Today :
-        <strong><%= java.time.LocalDate.now() %>
+        <strong class=".me-3"><%= java.time.LocalDate.now() %>
+        </strong>
+        <%
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            String currentTime = sdf.format(new Date());%>
+        Time :
+        <strong ><%= currentTime %>
         </strong>
     </p>
-
+    </p>
+        <p class="text-muted">
     <hr>
 
     <%String error = request.getParameter("error");

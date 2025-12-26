@@ -35,7 +35,8 @@ public class AttendanceCheckIn extends HttpServlet {
                 System.out.println(attendance);
                 if (ServiceHelper.attendanceService.addAttendance(attendance)) {
                     session.invalidate();
-                    response.sendRedirect("/AdminLogin.jsp?msg=checkin");
+                    response.sendRedirect("/AdminLogin.jsp?msg=");
+                    return;
                 }
             }
             response.sendRedirect("/attendance/staff_attendance.jsp?error=already_checked_in");

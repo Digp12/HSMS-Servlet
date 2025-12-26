@@ -176,7 +176,7 @@
                             <div class="col-md-12">
                                 <label for="address" class="form-label">Address</label>
                                 <textarea class="form-control" rows="3" id="address"
-                                          name="address"><%=staff.getAddress()%> required</textarea>
+                                          name="address" required><%=staff.getAddress()%> </textarea>
                                 <small class="text-danger" id="adderr"></small>
                             </div>
                         </div>
